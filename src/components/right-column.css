@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+/*map description*/
 .text-description-container {
   font-size: 20px;
   font-weight: 400;
@@ -10,4 +14,11 @@
 
 .text-description-container p {
   margin: 0;
+}
+
+
+/*right column container*/
+right-column-container {
+  /*display: flex;*/
+  flex-direction: column;
 }
