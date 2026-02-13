@@ -1,6 +1,6 @@
 import MapArticleCard from "./map-article-card";
 
-import "./right-column.css";
+import "./map-right-column.css";
 
 /*right column of the map section*/
 function TextDescription ({mapdescription}) {
@@ -10,7 +10,6 @@ function TextDescription ({mapdescription}) {
         </div>
     );
 }
-
 
 /*need to integrate article.aml*/
 export default function RightColumn ({defaultProps}) {

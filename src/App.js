@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import RightColumn from './components/right-column';
+import RightColumn from './components/map-right-column';
 
 function App() {
   const [ data, setData ] = useState(null);
@@ -27,9 +27,9 @@ function App() {
     article_image_3: "https://assets3.dailybruin.com/images/rivalry-issue-25-26/A.sp_.football.DullysDrop.UCLAFuture.11.20.25.AGS_-2414ff54267f479b1d27c4ac52a51ec3.jpg"  ,
 }
 
+//test two right columns for map section//
 return (
   <div>
-    //test two right columns for map section//
   <RightColumn defaultProps={defaultProps}/>
   <RightColumn defaultProps={defaultProps}/>
   </div>
