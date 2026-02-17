@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import TimelineContainer from './components/TimelineContainer';
+
 function App() {
   const [ data, setData ] = useState(null);
   
@@ -12,9 +14,10 @@ function App() {
 		.then(res => setData(res.data['article.aml']))
   }, [])
 
-  return data && (
+  return  (
     <div className="App">
       <Header/>
+      <TimelineContainer/>
       Hello Daily Bruin!
       <Footer/>
     </div>
