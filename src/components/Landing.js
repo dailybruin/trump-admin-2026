@@ -52,8 +52,8 @@ const Landing = ({data}) => {
     <>
       <GlobalStyle />
       <LandingContainer>
-        <Headline>{data.headline || 'HeaderHeaderHeader'}</Headline>
-        {data.landing_image && <img src={data.landing_image} alt="Landing Illustration" />}
+        <Headline>{data?.headline || 'Header'}</Headline>
+        {data?.landing_image && <img src={data.landing_image} alt="Landing Illustration" />}
         <ScrollArrow 
             src={arrow}
             alt="Scroll Down"
