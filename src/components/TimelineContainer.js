@@ -199,8 +199,8 @@ const ScrollActivateItem = ({ children, onActiveChange }) => {
   );
 };
 
-const TimelineContainer = () => {
-  const tempTimeline = [
+const TimelineContainer = (data) => {
+  const timeline = data ? [
     {
       timeline_date: "December 2006",
       timeline_description:
@@ -229,13 +229,13 @@ const TimelineContainer = () => {
       timeline_image:
         "https://assets3.dailybruin.com/images/rivalry-issue-25-26/A.sp_.football.feature.MJD_.11.23.25.file_-19a0de0cfc3c132740b6be3caa6980bb.jpg",
     },
-  ];
+  ] : data.timeline;
 
   const [activeIndex, setActiveIndex] = useState(-1);
 
   return (
     <Container>
-      {tempTimeline.map((event, index) => {
+      {timeline.map((event, index) => {
         const isActive = index === activeIndex;
 
         return (
@@ -245,7 +245,7 @@ const TimelineContainer = () => {
               if (inView) setActiveIndex(index);
             }}
           >
-            <TimelineItem isActive={isActive} isLast={index === tempTimeline.length - 1}>
+            <TimelineItem isActive={isActive} isLast={index === timeline.length - 1}>
               <DateColumn isActive={isActive}>
                 <DateText>{event.timeline_date}</DateText>
               </DateColumn>
