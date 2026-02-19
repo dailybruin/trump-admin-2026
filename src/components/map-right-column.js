@@ -16,7 +16,8 @@ export default function RightColumn({ defaultProps, index, setActiveIndex }) {
   useEffect(() => {
     // Only run observer on desktop
     if (window.innerWidth <= 768) return;
-
+    const currentSection = sectionRef.current;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -29,13 +30,13 @@ export default function RightColumn({ defaultProps, index, setActiveIndex }) {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentSection) {
+      observer.observe(currentSection);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, [index, setActiveIndex]);

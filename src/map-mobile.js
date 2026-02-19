@@ -7,7 +7,7 @@ import map2 from "./images/maps/map2.png";
 import map3 from "./images/maps/map3.png";
 
 export default function MapMobilePage() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [/*activeIndex,*/ setActiveIndex] = useState(0);
 
   const defaultProps = [
     {

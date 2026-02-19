@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './map-desktop.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import RightColumn from './components/map-right-column';
 import LeftColumn from "./components/map-left-column";
 import map1 from "./images/maps/map1.png";
