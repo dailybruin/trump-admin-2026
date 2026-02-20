@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ArticleCardsSection from "./components/ArticleCardsSection";
@@ -31,13 +32,13 @@ function App() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-  fetch("<TODO: insert api url here>")
-    .then((res) => res.json())
-    .then((res) => setData(res.data["article.aml"]))
-    .catch((err) => {
-      console.error(err);
-      setData(null);
-    });
+    fetch("<TODO: insert api url here>")
+      .then((res) => res.json())
+      .then((res) => setData(res.data["article.aml"]))
+      .catch((err) => {
+        console.error(err);
+        setData(null);
+      });
   }, []);
 
   const articles = data?.articles ?? fallbackArticles;
@@ -46,12 +47,21 @@ function App() {
     <div className="App">
       <Header />
 
-      <ArticleCardsSection
-        title="The Bruin’s full coverage of funding cuts"
-        articles={articles}
-      />
+      {/* placeholders until merged */}
+      <section id="home" />
+      <section id="timeline" />
+      <section id="map" />
 
-      <Footer />
+      <section id="read-more">
+        <ArticleCardsSection
+          title="Read more of The Bruin’s budget cut coverage:"
+          articles={articles}
+        />
+      </section>
+
+      <section id="about">
+        <Footer />
+      </section>
     </div>
   );
 }
