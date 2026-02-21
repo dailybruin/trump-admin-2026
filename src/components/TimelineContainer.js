@@ -31,7 +31,6 @@ const Timeline = styled.div`
 const TimelineItem = styled.div`
   display: flex;
   width: 100%;
-  max-width: 1200px;
   padding-bottom: 10vh;
   position: relative;
   will-change: opacity, transform, filter;
@@ -109,7 +108,7 @@ const Description = styled.p`
   margin-top: 0;
   margin-bottom: 20px;
   text-align: left;
-  max-width: 600px;
+  max-width: 90%;
 
   /* Stagger: text appears slightly before image when active */
   opacity: 0;
@@ -124,7 +123,7 @@ const Description = styled.p`
 
 const Image = styled.img`
   width: 100%;
-  max-width: 600px;
+  max-width: 90%;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
