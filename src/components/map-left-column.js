@@ -10,11 +10,11 @@ function MapImage({ image }) {
 }
 
 /* left column of the map section */
-export default function LeftColumn({ defaultProps }) {
+export default function LeftColumn({ data }) {
     return (
         <div className="left-column-container">
             <MapImage
-                image={defaultProps.map_image}
+                image={data.map_image}
             />
         </div>
     );

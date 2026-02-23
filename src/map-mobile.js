@@ -13,22 +13,6 @@ export default function MapMobilePage() {
 
   const defaultProps = [
     {
-      map_image: map1,
-      map_description: "get rid of this blurb + articles",
-      article_title_1: "Looking ahead to UCLA football’s 2026 season following lackluster 2025 campaign",
-      article_byline_1: "Connor Dullinger and Grant Walters",
-      article_url_1: "https://dailybruin.com/2025/11/23/looking-ahead-to-ucla-footballs-2026-season-following-lackluster-2025-campaign",
-      article_image_1: "https://assets3.dailybruin.com/images/rivalry-issue-25-26/A.sp_.football.DullysDrop.UCLAFuture.11.20.25.AGS_-2414ff54267f479b1d27c4ac52a51ec3.jpg",
-      article_title_2: "Looking ahead to UCLA football’s 2026 season following lackluster 2025 campaign",
-      article_byline_2: "Connor Dullinger and Grant Walters",
-      article_url_2: "https://dailybruin.com/2025/11/23/looking-ahead-to-ucla-footballs-2026-season-following-lackluster-2025-campaign",
-      article_image_2: "https://assets3.dailybruin.com/images/rivalry-issue-25-26/A.sp_.football.DullysDrop.UCLAFuture.11.20.25.AGS_-2414ff54267f479b1d27c4ac52a51ec3.jpg",
-      article_title_3: "Looking ahead to UCLA football’s 2026 season following lackluster 2025 campaign",
-      article_byline_3: "Connor Dullinger and Grant Walters",
-      article_url_3: "https://dailybruin.com/2025/11/23/looking-ahead-to-ucla-footballs-2026-season-following-lackluster-2025-campaign",
-      article_image_3: "https://assets3.dailybruin.com/images/rivalry-issue-25-26/A.sp_.football.DullysDrop.UCLAFuture.11.20.25.AGS_-2414ff54267f479b1d27c4ac52a51ec3.jpg"
-    },
-    {
       map_image: map2,
       map_description: "UCLA’s Community Programs Office – which provides basic needs resources for students – temporarily closed late September because of UCLA Student Affairs’ hiring review delays, employees alleged. UCLA implemented the hiring review to ensure it prioritized critical positions amid budgetary challenges, two administrators announced in an Aug. 20 email.",
       article_title_1: "Looking ahead to UCLA football’s 2026 season following lackluster 2025 campaign",
@@ -109,7 +93,7 @@ export default function MapMobilePage() {
       <div className="map-section" style={{ flexDirection: "column", gap: "20px" }}>
         {defaultProps.map((props, index) => (
           <div key={index} className="mobile-map-item">
-            <LeftColumn defaultProps={props} />
+            <LeftColumn data={props} />
             <RightColumn
               defaultProps={props}
               index={index}
