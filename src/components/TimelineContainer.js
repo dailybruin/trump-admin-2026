@@ -88,6 +88,12 @@ const DateText = styled.h3`
   margin-top: -15px;
   position: sticky;
   top: 70px;
+  opacity: 1;
+  transition: opacity 300ms ease;
+
+  ${props => props.isHidden && css`
+    opacity: 0;
+  `}
 
   ${props => props.isLast && css`
     position: static;
@@ -272,6 +278,7 @@ const TimelineContainer = (data) => {
 
     const [activeIndex, setActiveIndex] = useState(-1);
     const [dotTops, setDotTops] = useState([])
+    const [dateHidden, setDateHidden] = useState([])
     const timelineItemRefs = useRef([])
     useEffect(() => {
         const handleScroll = () => {
@@ -281,6 +288,17 @@ const TimelineContainer = (data) => {
                 return Math.max(0, Math.min(90 - rect.top, rect.height))
             })
             setDotTops(tops)
+
+            // Hide the date when it reaches the image midpoint
+            const hidden = timelineItemRefs.current.map((ref) => {
+                if (!ref) return false
+                const img = ref.querySelector('img')
+                if (!img) return false
+                const imgRect = img.getBoundingClientRect()
+                const imgQuarter = imgRect.top + imgRect.height * 0.25
+                return imgQuarter <= 70 // 70px is the sticky top position
+            })
+            setDateHidden(hidden)
         }
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
@@ -301,7 +319,7 @@ const TimelineContainer = (data) => {
                             <TimelineItem isActive={isActive} isLast={index === timeline.length - 1} ref={el => timelineItemRefs.current[index] = el}>
                                 <Dot isActive={isActive} isLast={index === timeline.length - 1} style={index !== timeline.length - 1 ? { top: `${dotTops[index] ?? 0}px` } : undefined} />
                                 <DateColumn isActive={isActive} >
-                                    <DateText isLast={index === timeline.length - 1}>{event.timeline_date}</DateText>
+                                    <DateText isLast={index === timeline.length - 1} isHidden={dateHidden[index]}>{event.timeline_date}</DateText>
                                 </DateColumn>
                                 <ContentColumn>
                                     <Description isActive={isActive}>
