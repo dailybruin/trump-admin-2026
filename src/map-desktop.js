@@ -5,6 +5,8 @@ import LeftColumn from "./components/map-left-column";
 import map1 from "./images/maps/map1.png";
 import map2 from "./images/maps/map2.png";
 import map3 from "./images/maps/map3.png";
+import map4 from "./images/maps/map4.png";
+import map5 from "./images/maps/map5.png";
 
 
 function MapDesktopPage({data}) {
@@ -16,7 +18,7 @@ function MapDesktopPage({data}) {
 return (
     <div>
       <h2 className = "map-title">
-        Where budget cuts have impacted UCLA
+        Where Budget Cuts Have Impacted UCLA
       </h2>
 
       <div className="map-section">
