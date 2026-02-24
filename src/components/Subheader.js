@@ -1,51 +1,36 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
-/* Global styles — loads Source Sans 3 from Google Fonts */
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200..900&display=swap');
-`;
-
-const breakpoints = {
-    mobile: '768px',
-};
-
-const SubheaderContainer = styled.div`
+const SubheaderContainer = styled.section`
     width: 100%;
-    /* Figma shows significant whitespace around the text block */
-    min-height: 80vh; 
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    padding: 5rem 2rem; 
+    padding: 4rem 0;
     box-sizing: border-box;
-
-    @media (max-width: ${breakpoints.mobile}) {
-        padding: 3rem 1.25rem;
-        align-items: flex-start;
-    }
 `;
 
 const SubheaderText = styled.div`
     font-family: 'Source Sans 3', sans-serif;
     font-weight: 400;
-    color: #000000;
+    font-style: normal;
+    color: #000;
     text-align: left;
-    /* Figma subheader text typically uses a tighter line height than 1.6 */
-    line-height: 1.4; 
-    /* Standard readable column width in Figma */
-    max-width: 800px; 
-    width: 100%;
+    line-height: 1;
+    letter-spacing: 160%;
+
+    width: 71.625rem; /* 1146px */
+
     font-size: 1.25rem; /* 20px */
 
-    @media (max-width: ${breakpoints.mobile}) {
+    @media (max-width: 48em) {
+        width: 21.375rem; /* 342px */
         font-size: 1rem; /* 16px */
-        line-height: 1.5;
     }
 
     p {
-        /* Paragraph spacing to match the "Perfect Storm" layout */
-        margin: 0 0 1.5rem 0; 
+        margin-bottom: 2rem;
     }
 
     p:last-child {
@@ -53,23 +38,36 @@ const SubheaderText = styled.div`
     }
 
     a {
-        color: #000000;
         text-decoration: underline;
-        /* Matches the black link style in your screenshot */
-        &:hover {
-            opacity: 0.6;
-        }
+        color: inherit;
     }
 `;
 
-const Subheader = ({ data }) => {
+const Subheader = () => {
     return (
-        <>
-            <GlobalStyle />
-            <SubheaderContainer id="subheader">
-                <SubheaderText>{data?.subheading}</SubheaderText>
-            </SubheaderContainer>
-        </>
+        <SubheaderContainer id="subheader">
+            <SubheaderText>
+                <p>
+                    UCLA is projected to run a $425 million deficit for the 2025-26 fiscal year, Stephen Agostini, UCLA’s former chief financial officer, told the Daily Bruin on Feb. 6. Chancellor Julio Frenk announced that Agostini had been replaced as CFO four days after the Bruin published a Feb. 13 article in which Agostini alleged that UCLA administrators have mismanaged the university’s finances, contributing to the deficit. Mary Osako, vice chancellor for strategic communications, called Agostini’s deficit projection an overestimate in a Feb. 17 statement but did not provide additional financial data.
+                </p>
+
+                <p>
+                    The university has not posted annual{" "}
+                    <a
+                        href="https://www.finance.ucla.edu/corporate-accounting/ucla-annual-financial-reports"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        financial reports
+                    </a>
+                    , which Agostini said contain erroneous numbers, for the last two fiscal years as of mid-February. Frenk told the Daily Bruin Jan. 15 that several factors – some of which are laid out in the timeline below – have combined to create “a perfect storm” culminating in UCLA’s current budget crisis. Programs across campus have had their funding slashed, from student-run retention projects to tour guide organizations.
+                </p>
+
+                <p>
+                    The Daily Bruin News team’s special project – “A Perfect Storm”: How Budget Cuts Have Impacted UCLA – outlines the history behind UCLA’s budget shortfalls and tracks the parts of campus that have faced cuts.
+                </p>
+            </SubheaderText>
+        </SubheaderContainer>
     );
 };
 
