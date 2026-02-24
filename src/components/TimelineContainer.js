@@ -7,7 +7,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 50px 0;
-  font-family: 'IBM Plex Serif', serif;
   position: relative;
 `;
 
@@ -16,7 +15,6 @@ const Timeline = styled.div`
   width: 80%;
   flex-direction: column;
   align-items: center;
-  border-left: 1px solid black;
 
   @media (max-width: 768px) {
     width: 90%;
@@ -33,7 +31,11 @@ const TimelineItem = styled.div`
   width: 100%;
   padding-bottom: 10vh;
   position: relative;
-  will-change: opacity, transform, filter;
+  border-left: 1px solid black;
+  ${props => props.isLast && css`   // no border on last item
+    border: 1px solid rgba(0,0,0,0);  // transparent border to maintain spacing
+  `}
+
 
   @media (max-width: 425px) {
     flex-direction: column;
@@ -74,22 +76,34 @@ const Dot = styled.div`
     ${props => props.isActive && css`
       transform: scale(1);
       opacity: 1;
-  `}
+    `}
 `;
 
-const DateText = styled.h2`
+const DateText = styled.h3`
   width: 100%;
   font-size: 2rem;
-  font-weight: bold;
-  color: #2c3e50;
+  font-weight: 500;
+  font-family: 'Literata', sans-serif;
+  color: #165383;
   margin-top: -15px;
   position: sticky;
-  top: 50px;
+  top: 70px;
+  opacity: 1;
+  transition: opacity 300ms ease;
+
+  ${props => props.isHidden && css`
+    opacity: 0;
+  `}
+
+  ${props => props.isLast && css`
+    position: static;
+  `}
 `;
 
 const ContentColumn = styled.div`
   width: 75%;
-  margin-left: 10%;;
+  margin-left: 10%;
+  margin-top: -15px;
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -103,14 +117,16 @@ const ContentColumn = styled.div`
 `;
 
 const Description = styled.p`
-  font-size: 1.1rem;
+  font-size: 20px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 400;
   line-height: 1.6;
+  letter-spacing: 0%;
   margin-top: 0;
   margin-bottom: 20px;
   text-align: left;
-  max-width: 90%;
+  width: 100%;
 
-  /* Stagger: text appears slightly before image when active */
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 650ms ease, transform 650ms ease;
@@ -123,7 +139,6 @@ const Description = styled.p`
 
 const Image = styled.img`
   width: 100%;
-  max-width: 90%;
   height: auto;
   object-fit: cover;
   border-radius: 8px;
@@ -139,6 +154,19 @@ const Image = styled.img`
     transform: translateY(0) scale(1);
   `}
 `;
+
+const PhotoCredits = styled.small`
+    font-family: 'Source Sans 3', sans-serif;
+    text-align: right;
+    font-size: 12px;
+    margin-top: 5px; 
+    opacity: 0;
+    transition: opacity 650ms ease, transform 650ms ease;
+    ${props => props.isActive && css`
+        opacity: 1;
+        transform: translateY(0);
+  `}
+`
 
 /** Helper: one section that becomes "active" when it hits the center band */
 const ScrollActivateItem = ({ children, onActiveChange }) => {
@@ -178,15 +206,27 @@ const TimelineContainer = (data) => {
 
     const [activeIndex, setActiveIndex] = useState(-1);
     const [dotTops, setDotTops] = useState([])
+    const [dateHidden, setDateHidden] = useState([])
     const timelineItemRefs = useRef([])
     useEffect(() => {
         const handleScroll = () => {
             const tops = timelineItemRefs.current.map((ref) => {
                 if (!ref) return 0
                 const rect = ref.getBoundingClientRect()
-                return Math.max(0, Math.min(55 - rect.top, rect.height))
+                return Math.max(0, Math.min(90 - rect.top, rect.height))
             })
             setDotTops(tops)
+
+            // Hide the date when it reaches the image midpoint
+            const hidden = timelineItemRefs.current.map((ref) => {
+                if (!ref) return false
+                const img = ref.querySelector('img')
+                if (!img) return false
+                const imgRect = img.getBoundingClientRect()
+                const imgQuarter = imgRect.top + imgRect.height * 0.25
+                return imgQuarter <= 70 // 70px is the sticky top position
+            })
+            setDateHidden(hidden)
         }
         window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
@@ -205,9 +245,9 @@ const TimelineContainer = (data) => {
                             }}
                         >
                             <TimelineItem isActive={isActive} isLast={index === timeline.length - 1} ref={el => timelineItemRefs.current[index] = el}>
-                                <Dot isActive={isActive} style={{ top: `${dotTops[index] ?? 0}px` }} />
-                                <DateColumn isActive={isActive}>
-                                    <DateText>{event.timeline_date}</DateText>
+                                <Dot isActive={isActive} isLast={index === timeline.length - 1} style={index !== timeline.length - 1 ? { top: `${dotTops[index] ?? 0}px` } : undefined} />
+                                <DateColumn isActive={isActive} >
+                                    <DateText isLast={index === timeline.length - 1} isHidden={dateHidden[index]}>{event.timeline_date}</DateText>
                                 </DateColumn>
                                 <ContentColumn>
                                     <Description isActive={isActive}>
@@ -219,6 +259,7 @@ const TimelineContainer = (data) => {
                                         src={event.timeline_image}
                                         alt={`Timeline event ${event.timeline_date}`}
                                     />
+                                    <PhotoCredits isActive={isActive}>{event.timeline_credits}</PhotoCredits>
                                 </ContentColumn>
                             </TimelineItem>
                         </ScrollActivateItem>
