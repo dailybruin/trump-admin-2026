@@ -46,7 +46,7 @@ const Subheader = ({ data }) => {
   return (
     <>
       <GlobalStyle />
-      <SubheaderContainer>
+      <SubheaderContainer id="subheader">
         <SubheaderText>{data?.subheading}</SubheaderText>
       </SubheaderContainer>
     </>

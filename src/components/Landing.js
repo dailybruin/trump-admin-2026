@@ -53,10 +53,10 @@ const ScrollArrow = styled.img`
 const Landing = ({ data }) => {
     // Smoothly scrolls the user past the landing section to the main content
     const scrollToContent = () => {
-        window.scrollTo({
-            top: window.innerHeight,
-            behavior: 'smooth'
-        });
+        const subheader = document.getElementById('subheader');
+        if (subheader) {
+            subheader.scrollIntoView({ behavior: 'smooth'});
+        }
     };
   
     return (
