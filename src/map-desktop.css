@@ -51,10 +51,14 @@
   z-index: 5;
 }
 
+
 @media (max-width: 768px) {
   html {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: none !important;
     scroll-padding-top: 90px;
+  }
+  #map, #timeline {
+    scroll-snap-type: y proximity;
   }
 
 .map-title {
