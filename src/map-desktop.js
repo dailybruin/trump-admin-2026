@@ -31,7 +31,7 @@ return (
             <div>
             <RightColumn
               key={index}
-              defaultProps={props}
+              data={props}
               index={index}
               setActiveIndex={setActiveIndex}
             />
