@@ -2,6 +2,8 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
+import DBLogo from "../images/DailyBruinLogo.svg";
+
 const FLATPAGE_BLUE = "#165383";
 
 // Desktop nav only on true desktop widths (prevents iPad portrait / zoom edge cases)
@@ -31,24 +33,26 @@ const Inner = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  /* optional: keeps header content centered on large screens */
-  
-
   min-width: 0;
 `;
 
-/* Left: DAILY BRUIN */
+/* Left: Daily Bruin logo */
 const Brand = styled.a`
+  display: inline-flex;
+  align-items: center;
+
   text-decoration: none;
   color: #fff;
 
-  font-family: "ITC Century", "Times New Roman", Times, serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: normal;
-
   white-space: nowrap;
   flex: 0 0 auto;
+  padding: 0;
+
+  img {
+    height: 18px; /* tweak if needed */
+    width: auto;
+    display: block;
+  }
 `;
 
 /* Right: Desktop nav */
@@ -183,10 +187,8 @@ export default function Header() {
   // Lock body scroll when mobile menu open
   useEffect(() => {
     if (!open) return;
-
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
     return () => {
       document.body.style.overflow = prevOverflow;
     };
@@ -214,7 +216,7 @@ export default function Header() {
       <Bar ref={barRef}>
         <Inner>
           <Brand href="https://dailybruin.com" target="_blank" rel="noreferrer">
-            DAILY BRUIN
+            <img src={DBLogo} alt="Daily Bruin" />
           </Brand>
 
           <DesktopNav aria-label="Primary navigation">
@@ -234,8 +236,9 @@ export default function Header() {
       <MobileMenu open={open} aria-label="Mobile menu">
         <MobileTop>
           <Brand href="https://dailybruin.com" target="_blank" rel="noreferrer">
-            DAILY BRUIN
+            <img src={DBLogo} alt="Daily Bruin" />
           </Brand>
+
           <BurgerButton
             as="button"
             aria-label="Close menu"
