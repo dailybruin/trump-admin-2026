@@ -17,8 +17,8 @@ const SubheaderText = styled.div`
     font-style: normal;
     color: #000;
     text-align: left;
-    line-height: 1;
-    letter-spacing: 160%;
+    line-height: 1.3;
+    letter-spacing: 0.05em;
 
     width: 71.625rem; /* 1146px */
 
@@ -60,11 +60,11 @@ const Subheader = () => {
                     >
                         financial reports
                     </a>
-                    , which Agostini said contain erroneous numbers, for the last two fiscal years as of mid-February. Frenk told the Daily Bruin Jan. 15 that several factors – some of which are laid out in the timeline below – have combined to create “a perfect storm” culminating in UCLA’s current budget crisis. Programs across campus have had their funding slashed, from student-run retention projects to tour guide organizations.
+                    , which Agostini said contain erroneous numbers, for the last two fiscal years as of mid-February. Frenk told the Daily Bruin Jan. 15 that several factors – some of which are laid out in the timeline below – have combined to create “a perfect storm” culminating in UCLA’s current budget deficit. Programs across campus have had their funding slashed, from academic departments to tour guide organizations. 
                 </p>
 
                 <p>
-                    The Daily Bruin News team’s special project – “A Perfect Storm”: How Budget Cuts Have Impacted UCLA – outlines the history behind UCLA’s budget shortfalls and tracks the parts of campus that have faced cuts.
+                    The Daily Bruin News team’s special project – “A Perfect Storm”: How Budget Cuts Have Impacted UCLA – outlines the history behind UCLA’s budget shortfalls and tracks the parts of campus that have faced cuts. 
                 </p>
             </SubheaderText>
         </SubheaderContainer>
