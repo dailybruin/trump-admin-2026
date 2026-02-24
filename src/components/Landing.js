@@ -1,12 +1,12 @@
 import styled, { createGlobalStyle } from "styled-components";
 import arrow from '../images/arrow.svg'
 
-// Global styles — loads Literata from Google Fonts
+/* Global styles — loads Literata from Google Fonts */
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
 `;
 
-// Breakpoints for responsive design
+/* Breakpoints for responsive design */
 const breakpoints = {
     mobile: '768px',
 };
@@ -20,7 +20,7 @@ const LandingContainer = styled.div`
     background-color: #fff;
 `;
 
-// H1 typography — desktop: 60px, mobile: 36px (per design spec)
+/* H1 typography — desktop: 3.75em (60px), mobile: 2.25em (36px) per design spec */
 const Headline = styled.h1`
     font-family: 'Literata', serif;
     font-weight: 600;
@@ -44,18 +44,18 @@ const ScrollArrow = styled.img`
     cursor: pointer;
     transition: transform 0.3s ease;
 
-    // Subtle downward nudge on hover to reinforce scroll intent
+    /* Subtle downward nudge on hover to reinforce scroll intent */
     &:hover {
         transform: translateY(5px);
     }
 `;
 
 const Landing = ({ data }) => {
-    // Smoothly scrolls the user past the landing section to the main content
+    /* Scrolls to the top of the subheader section on arrow click */
     const scrollToContent = () => {
         const subheader = document.getElementById('subheader');
         if (subheader) {
-            subheader.scrollIntoView({ behavior: 'smooth'});
+            subheader.scrollIntoView({ behavior: 'smooth' });
         }
     };
   
