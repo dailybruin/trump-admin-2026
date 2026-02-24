@@ -7,6 +7,7 @@
   font-family: "Source Sans 3", sans-serif;
   line-height: 100%;
   padding: 20px;
+  font-style: normal;
   /*max-width: 446.5px;*/
   width: fit-content;
   margin: 0 auto;
@@ -24,4 +25,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+.text-description-container p{
+  font-size: 16px;
+}
 }
