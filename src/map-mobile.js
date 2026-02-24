@@ -11,7 +11,12 @@ import map5 from "./images/maps/map5.png";
 export default function MapMobilePage({data}) {
   const [/*activeIndex,*/ setActiveIndex] = useState(0);
 
-  const defaultProps = data ?? [];
+  const mapImages = [map2, map3, map4, map5];
+
+  const defaultProps = (data ?? []).map((item, index) => ({
+    ...item,
+    map_image: mapImages[index]
+  }));
 
   // const defaultProps = [
   //   {

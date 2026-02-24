@@ -13,7 +13,12 @@ function MapDesktopPage({data}) {
   // console.log(data)
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const map_data = data ?? [];
+  const mapImages = [map2, map3, map4, map5];
+  
+  const map_data = (data ?? []).map((item, index) => ({
+    ...item,
+    map_image: mapImages[index]
+  }));
 
 return (
     <div>
