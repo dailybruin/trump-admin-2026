@@ -90,7 +90,7 @@ function App() {
       <section id="read-more">
         <ArticleCardsSection
           title="Read more of The Bruin’s budget cut coverage:"
-          articles={articlesToShow}
+          articles={data.articles}
         />
       </section>
 
