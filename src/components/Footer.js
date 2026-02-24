@@ -12,30 +12,30 @@ const Container = styled.div`
 	background-color: #fff;
 	height: auto;
 	color: #165383;
-	padding: 60px 0 10px 0;
+	padding: 3.75em 0 0.625em 0;
     text-align: center;
 	h1 {
 		margin: 0;
 		font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
+    font-size: 1.875em;
 	}
   /* margin-bottom: 20px; */
 `
 
 const Socials = styled.div`
     position: relative;
-	margin-top: 20px;
+	margin-top: 1.25em;
   
 	img {
 
     position: relative;
-		margin: 0 20px;
+		margin: 0 1.25em; /* Horizontal spacing between icons */
 	}
 	p {
     position: relative;
-		margin: 80px 20px;
+		margin: 5em 1.25em;  /* Generous top margin to push tagline below icons */
 		${mediaQueries.mobile} {
-			margin: 50px 20px;
+			margin: 3.125em 1.25em;  /* Tighter spacing on mobile */
 		}
 	}
 `
@@ -45,6 +45,7 @@ const Footer = () => {
         <Container>
         <h1>DAILY BRUIN</h1>
         <Socials>
+          {/* Social icon links — open in new tab to keep user on page */}
           <a href="https://www.instagram.com/dailybruin" target="_blank" rel="noreferrer"><img src={insta} alt=""/></a>
           <a href="https://www.facebook.com/dailybruin" target="_blank" rel="noreferrer"><img src={fb} alt=""/></a>
           <a href="https://www.twitter.com/dailybruin" target="_blank" rel="noreferrer"><img src={twitter} alt=""/></a>

@@ -1,9 +1,15 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+/* Global styles — loads Literata and Source Sans 3 from Google Fonts */
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@200..900&display=swap');
 `;
+
+const breakpoints = {
+    tablet: '1024px',
+    mobile: '768px',
+};
 
 const CreditsContainer = styled.div`
     width: 100%;
@@ -25,23 +31,30 @@ const Section = styled.div`
     align-items: center;
     gap: 2rem;
     width: 100%;
-    max-width: 1200px;
+    max-width: 75%;
     box-sizing: border-box;
 `;
 
 const SectionTitle = styled.h2`
   font-family: 'Literata', serif;
-  font-size: 36px;
+  font-size: 1.5625em;
   font-weight: 500;
   color: #165383;
   text-align: center;
+  line-height: 100%;
+  letter-spacing: 0%;
   margin: 0;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1.25em;
+    font-weight: 400;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.5em;
   width: 100%;
   box-sizing: border-box;
 
@@ -51,7 +64,7 @@ const Grid = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    max-width: 500px;
+    max-width: 31.25em;
     margin: 0 auto;
   }
 `;
@@ -59,7 +72,7 @@ const Grid = styled.div`
 const CreditCard = styled.div`
   background-color: white;
   border: 2px solid #000000;
-  border-radius: 12px;
+  border-radius: 0.75em;
   padding: 1.5rem;
   text-align: center;
   display: flex;
@@ -70,18 +83,31 @@ const CreditCard = styled.div`
 
 const Name = styled.h3`
   font-family: 'Literata', serif;
-  font-size: 25px;
+  font-size: 1.5625em;
   font-weight: 500;
   color: #165383;
+  line-height: 100%;
+  letter-spacing: 0%;
   margin: 0;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1.25em;
+    font-weight: 400;
+  }
 `;
 
 const Position = styled.p`
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 20px;
+  font-size: 1.25em;
   font-weight: 400;
   color: #165383;
+  line-height: 100%;
+  letter-spacing: 0%;
   margin: 0;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 1em;
+  }
 `;
 
 const Credits = ({ data }) => {

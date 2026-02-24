@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 import DBLogo from '../images/DailyBruinLogo.svg'
 
+// Sticky header bar - stays fixed at the top while user scrolls
 const DBHeader = styled("div")`
-  z-index: 2001;
+  z-index: 2001;  /* Ensure header is above all other content */
 
   position: -webkit-sticky;
   position: sticky;
@@ -17,8 +18,8 @@ const DBHeader = styled("div")`
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
-  font-size: 18px;
-  line-height: 21.6px;
+  font-size: 1.125em;
+  line-height: 1.2em;
   /* border-bottom: 2px solid black; */
 `;
 
